@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termo</title>
+    <style>
+        body {
+            background-color: rgb(49, 49, 49);
+        }
+
+        div#tentativas {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(221, 221, 221);
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px black;
+            text-align: center;
+            color: rgb(26, 26, 26);
+            margin-left: 825px;
+            margin-top: -550px;
+            line-height: 200px;
+            font: normal 125px Arial;
+        }
+
+        div#jaforam {
+            width: 210px;
+            height: 400px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px black;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            line-height: 200px;
+            margin-left: -235px;
+            margin-top: -200px;
+            font: normal 25px Arial;
+        }
+
+        div#jaforam1 {
+            width: 200px;
+            height: 390px;
+            background-color: rgb(27, 27, 27);
+            border-radius: 10px;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            line-height: 200px;
+            margin-left: -230px;
+            margin-top: -395px;
+            font: normal 5px Arial;
+        }
+
+        div#jaforam2 {
+            width: 200px;
+            height: 300px;
+            background-color: rgb(27, 27, 27);
+            border-radius: 10px;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            line-height: 200px;
+            margin-left: -230px;
+            margin-top: -300px;
+            font: normal 30px Arial;
+            word-break: break-all;
+        }
+
+        div#area {
+            width: 800px;
+            height: 600px;
+            background-color: rgb(207, 207, 207);
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px black;
+            text-align: center;
+            color: black;
+            margin: auto;
+        }
+
+        #letra1 {
+            margin-left: 160px;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 4px black;
+            background-color: rgb(48, 48, 48);
+            font: normal 25px Arial;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+        }
+
+        #letra2 {
+            margin-left: 265px;
+            margin-top: -50px;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 4px black;
+            background-color: rgb(48, 48, 48);
+            font: normal 25px Arial;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+        }
+
+        #letra3 {
+            margin-left: 370px;
+            margin-top: -50px;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 4px black;
+            background-color: rgb(48, 48, 48);
+            font: normal 25px Arial;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+        }
+
+        #letra4 {
+            margin-left: 475px;
+            margin-top: -50px;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 4px black;
+            background-color: rgb(48, 48, 48);
+            font: normal 25px Arial;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+        }
+
+        #letra5 {
+            margin-left: 580px;
+            margin-top: -50px;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 4px black;
+            background-color: #303030;
+            font: normal 25px Arial;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+        }
+
+        #txtpalavra {
+            text-align: center;
+            margin-top: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="area">
+        <h1>Termo</h1>
+        <div id="letra1"></div><div id="letra2"></div><div id="letra3"></div><div id="letra4"></div><div id="letra5"></div>
+        <input size="100" maxlength="5" type="text" name="txtpalavra" id="txtpalavra">
+        <p></p>
+        <input type="button" value="Verificar" onclick="verificar()">
+        <div id="tentativas">!</div>
+        <div id="jaforam">Letras</div>
+        <div id="jaforam1"></div>
+        <div id="jaforam2"></div>
+    </div>
+    <script>
+        var termos = ["SAGAZ", "AMAGO", "NEGRO", "TERMO", "EXITO", "MEXER", "NOBRE", "SENSO", "AFETO", "ALGOZ", "ETICA",
+        "PLENA", "FAZER", "TENUE", "MUTUA", "ASSIM", "VIGOR", "SUTIL", "AQUEM", "POREM", "SECAO", "FOSSE",
+        "PODER", "SANAR", "AUDAZ", "IDEIA", "CERNE", "INATO", "MORAL", "DESDE", "MUITO", "JUSTO", "QUIÇA",
+        "HONRA", "TORPE", "SONHO", "RAZAO", "FUTIL", "ETNIA", "ICONE", "AMIGO", "ANEXO", "EGIDE", "TANGE",
+        "LAPSO", "HAVER", "EXPOR", "DENGO", "TEMPO", "ENTAO"]
+
+        function numerorandom(a, b) {
+            return Math.floor(Math.random() * (b - a + 1)) + a
+        }
+
+        var tentativas = 6
+        var numero = numerorandom(0, 49)
+        var palavraatual = termos[numero]
+        var letras = document.getElementById("jaforam2")
+        var alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+        function verificar() {
+
+            tentativas -= 1
+
+            var txtpalavra = document.getElementById("txtpalavra")
+            var palavras = String(txtpalavra.value)
+            var palavra = palavras.toUpperCase()
+            var restam = document.getElementById("tentativas")
+            restam.innerHTML = `${tentativas}`
+
+            var letra11 = document.getElementById("letra1")
+            var letra22 = document.getElementById("letra2")
+            var letra33 = document.getElementById("letra3")
+            var letra44 = document.getElementById("letra4")
+            var letra55 = document.getElementById("letra5")
+
+            if (palavra.length == 5) {
+    
+                var letra1 = palavra[0]
+                var letra2 = palavra[1]
+                var letra3 = palavra[2]
+                var letra4 = palavra[3]
+                var letra5 = palavra[4]
+
+                letra11.innerHTML = `${letra1}`
+                letra22.innerHTML = `${letra2}`
+                letra33.innerHTML = `${letra3}`
+                letra44.innerHTML = `${letra4}`
+                letra55.innerHTML = `${letra5}`
+                
+                if (palavraatual[0] == palavra[0]) {
+                    letra11.style.backgroundColor = "green"
+                } else {
+                    if (palavraatual.includes(palavra[0])) {
+                        letra11.style.backgroundColor = "#e9d900"
+                    } else {
+                        letra11.style.backgroundColor = "gray"
+                    }
+                }
+
+                if (palavraatual[1] == palavra[1]) {
+                    letra22.style.backgroundColor = "green"
+                } else {
+                    if (palavraatual.includes(palavra[1])) {
+                        letra22.style.backgroundColor = "#e9d900"
+                    } else {
+                        letra22.style.backgroundColor = "gray"
+                    }
+                }
+
+                if (palavraatual[2] == palavra[2]) {
+                    letra33.style.backgroundColor = "green"
+                } else {
+                    if (palavraatual.includes(palavra[2])) {
+                        letra33.style.backgroundColor = "#e9d900"
+                    } else {
+                        letra33.style.backgroundColor = "gray"
+                    }
+                }
+
+                if (palavraatual[3] == palavra[3]) {
+                    letra44.style.backgroundColor = "green"
+                } else {
+                    if (palavraatual.includes(palavra[3])) {
+                        letra44.style.backgroundColor = "#e9d900"
+                    } else {
+                        letra44.style.backgroundColor = "gray"
+                    }
+                }
+
+                if (palavraatual[4] == palavra[4]) {
+                    letra55.style.backgroundColor = "green"
+                } else {
+                    if (palavraatual.includes(palavra[4])) {
+                        letra55.style.backgroundColor = "#e9d900"
+                    } else {
+                        letra55.style.backgroundColor = "gray"
+                    }
+                }
+
+                if (palavraatual == palavra) {
+                    alert("CONSEGUI!!")
+                }
+
+                alpha.splice(alpha.indexOf(palavra[0]), 1)
+                alpha.splice(alpha.indexOf(palavra[1]), 1)
+                alpha.splice(alpha.indexOf(palavra[2]), 1)
+                alpha.splice(alpha.indexOf(palavra[3]), 1)
+                alpha.splice(alpha.indexOf(palavra[4]), 1)
+
+
+                letras.innerHTML = `${alpha}`
+
+                if (tentativas == 0) {
+                    alert("Já foram todas as tentativas!")
+                    letra11.innerHTML = `${palavraatual[0]}`
+                    letra22.innerHTML = `${palavraatual[1]}`
+                    letra33.innerHTML = `${palavraatual[2]}`
+                    letra44.innerHTML = `${palavraatual[3]}`
+                    letra55.innerHTML = `${palavraatual[4]}`
+
+                    letra11.style.backgroundColor = "red"
+                    letra22.style.backgroundColor = "red"
+                    letra33.style.backgroundColor = "red"
+                    letra44.style.backgroundColor = "red"
+                    letra55.style.backgroundColor = "red"
+
+                    
+                    numero = numerorandom(0, 49)
+                    palavraatual = termos[numero]
+
+                    tentativas += 6
+                }
+            } else {
+                alert("Caracteres insuficientes!")
+                tentativas += 1
+            }
+        }
+    </script>
+</body>
+</html>
